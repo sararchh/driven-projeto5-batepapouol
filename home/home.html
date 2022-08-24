@@ -20,33 +20,50 @@
   <div class="container">
     <header>
       <img class="logo" src="../assets/logo.png" alt="logo uol">
-      <ion-icon  name="people"></ion-icon>
+      <ion-icon onclick="showModal()" name="people"></ion-icon>
     </header>
 
     <nav class="navbar hideMenu">
       <div class="menu">
+        <ion-icon name="close" onclick="showModal()"></ion-icon>
         <div class="menu-items">
-            <p>Escolha um contato </br>
-              para enviar mensagem:</p>
+          <p>Escolha um contato </br>
+            para enviar mensagem:</p>
 
-          <li>
-            <ion-icon name="people"></ion-icon>
-            Todos
+          <li class="liParticipant" onclick="checkItemParticipant(this)">
+            <div class="card">
+              <ion-icon name="people"></ion-icon>
+              Todos
+            </div>
+            <ion-icon name="checkmark-sharp" class="checkmark-outline"></ion-icon>
           </li>
-          <li data-identifier="participant">
-            <ion-icon name="person-circle"></ion-icon>
-            João
+
+          <li data-identifier="participant" class="liParticipant" onclick="checkItemParticipant(this)">
+            <div class="card">
+              <ion-icon name="person-circle"></ion-icon>
+              João
+            </div>
+            <ion-icon name="checkmark-sharp" class="checkmark-outline"></ion-icon>
           </li>
 
           <p>Escolha a visibilidade:</p>
-          <li data-identifier="visibility">
-            <ion-icon name="lock-open"></ion-icon>
-            Público
+
+          <li data-identifier="visibility" class="liVisibility" onclick="checkItemVisibility(this)" >
+            <div class="card cardPublic">
+              <ion-icon name="lock-open"></ion-icon>
+              Público
+            </div>
+            <ion-icon name="checkmark-sharp" class="checkmark-outline"></ion-icon>
           </li>
-          <li>
-            <ion-icon name="lock-closed"></ion-icon>
-            Reservadamente
+
+          <li class="liVisibility" onclick="checkItemVisibility(this)">
+            <div class="card cardPrivate">
+              <ion-icon name="lock-closed"></ion-icon>
+              Reservadamente
+            </div>
+            <ion-icon name="checkmark-sharp" class="checkmark-outline "></ion-icon>
           </li>
+
         </div>
       </div>
     </nav>

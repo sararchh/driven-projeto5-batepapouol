@@ -152,3 +152,27 @@ footer ion-icon {
   font-weight: 700;
   line-height: 18.75px;
 }
+
+.card {
+  display: flex;
+  align-items: center;
+}
+
+.checkmark-outline {
+  display: none;
+  color: var(--green);
+}
+
+.liVisibility {
+  display: flex;
+  justify-content: space-between;
+}
+
+.liParticipant {
+  display: flex;
+  justify-content: space-between;
+}
+
+.showIconCheck {
+  display: inline;
+}
