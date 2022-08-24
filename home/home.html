@@ -48,7 +48,7 @@
 
           <p>Escolha a visibilidade:</p>
 
-          <li data-identifier="visibility" class="liVisibility" onclick="checkItemVisibility(this)" >
+          <li data-identifier="visibility" class="liVisibility" onclick="checkItemVisibility(this)">
             <div class="card cardPublic">
               <ion-icon name="lock-open"></ion-icon>
               Público
@@ -68,18 +68,20 @@
       </div>
     </nav>
 
-    <ul>
-      <li>
-        <p><span>(09:21:45)</span> <strong>João</strong> entra na sala...</p>
-      </li>
-      <li class="messageChat">
-        <p><span>(09:21:45)</span> <strong>João</strong> para <strong>Todos</strong> Bom dia</p>
-      </li>
-      <li class="messagePrivate">
-        <p><span>(09:21:45)</span> <strong>João</strong> reservadamente para <strong>Maria</strong> : Oi gatinha quer
-          tc?</p>
-      </li>
-    </ul>
+    <div class="chatMessages">
+      <ul>
+        <!-- <li>
+          <p><span>(09:21:45)</span> <strong>João</strong> entra na sala...</p>
+        </li>
+        <li class="messageChat">
+          <p><span>(09:21:45)</span> <strong>João</strong> para <strong>Todos</strong> Bom dia</p>
+        </li>
+        <li class="messagePrivate">
+          <p><span>(09:21:45)</span> <strong>João</strong> reservadamente para <strong>Maria</strong> : Oi gatinha quer
+            tc?</p>
+        </li> -->
+      </ul>
+    </div>
 
     <footer>
       <input type="text" placeholder="Escreva aqui...">
@@ -87,6 +89,8 @@
     </footer>
   </div>
 </body>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script src="script.js"></script>
 
