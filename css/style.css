@@ -10,13 +10,17 @@
   flex-direction: column;
 }
 
+.hideLogin {
+  display: none;
+}
+
 .logo{
   position: absolute;
   top: 120px;
   left: 120px;
 }
 
-input { 
+.inputLogin { 
   width: 261px;
   height: 54px;
 

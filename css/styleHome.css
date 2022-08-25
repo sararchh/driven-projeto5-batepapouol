@@ -1,10 +1,16 @@
-.container {
+.containerHome {
   max-width: 375px;
   width: 375px;
 
   padding: 80px 0;
 
   background-color: var(--container);
+
+  display: none;
+}
+
+.showChat {
+  display: inline;
 }
 
 header {
@@ -25,7 +31,7 @@ header {
   background-color: var(--background);
 }
 
-.logo {
+.logoChat {
   width: 75px;
   height: 53px;
 }
@@ -89,7 +95,7 @@ footer {
   background-color: var(--background);
 }
 
-input {
+.inputMessage {
   border: none;
   outline: none;
 
