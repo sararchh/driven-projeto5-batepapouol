@@ -2,6 +2,8 @@
   max-width: 375px;
   width: 375px;
 
+  padding: 80px 0;
+
   background-color: var(--container);
 }
 
@@ -14,6 +16,10 @@ header {
   justify-content: space-between;
 
   padding: 0 15px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
 
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
   background-color: var(--background);
