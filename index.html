@@ -37,21 +37,23 @@
           <p>Escolha um contato </br>
             para enviar mensagem:</p>
 
-          <li class="liParticipant" onclick="checkItemParticipant(this)">
-            <div class="card">
-              <ion-icon name="people"></ion-icon>
-              Todos
-            </div>
-            <ion-icon name="checkmark-sharp" class="checkmark-outline"></ion-icon>
-          </li>
+          <div class="participants">
+            <!-- <li class="liParticipant" onclick="checkItemParticipant(this)">
+              <div class="card">
+                <ion-icon name="people"></ion-icon>
+                Todos
+              </div>
+              <ion-icon name="checkmark-sharp" class="checkmark-outline showIconCheck"></ion-icon>
+            </li>
 
-          <li data-identifier="participant" class="liParticipant" onclick="checkItemParticipant(this)">
-            <div class="card">
-              <ion-icon name="person-circle"></ion-icon>
-              João
-            </div>
-            <ion-icon name="checkmark-sharp" class="checkmark-outline"></ion-icon>
-          </li>
+            <li data-identifier="participant" class="liParticipant" onclick="checkItemParticipant(this)">
+              <div class="card">
+                <ion-icon name="person-circle"></ion-icon>
+                João
+              </div>
+              <ion-icon name="checkmark-sharp" class="checkmark-outline"></ion-icon>
+            </li> -->
+          </div>
 
           <p>Escolha a visibilidade:</p>
 
@@ -76,7 +78,7 @@
     </nav>
 
     <div class="chatMessages">
-      <ul>
+      <ul class="ulChats">
         <!-- <li>
           <p><span>(09:21:45)</span> <strong>João</strong> entra na sala...</p>
         </li>
