@@ -34,28 +34,14 @@
       <div class="menu">
         <ion-icon name="close" onclick="showModal()"></ion-icon>
         <div class="menu-items">
-          <p>Escolha um contato </br>
+          <p class="text">Escolha um contato </br>
             para enviar mensagem:</p>
 
           <div class="participants">
-            <!-- <li class="liParticipant" onclick="checkItemParticipant(this)">
-              <div class="card">
-                <ion-icon name="people"></ion-icon>
-                Todos
-              </div>
-              <ion-icon name="checkmark-sharp" class="checkmark-outline showIconCheck"></ion-icon>
-            </li>
-
-            <li data-identifier="participant" class="liParticipant" onclick="checkItemParticipant(this)">
-              <div class="card">
-                <ion-icon name="person-circle"></ion-icon>
-                João
-              </div>
-              <ion-icon name="checkmark-sharp" class="checkmark-outline"></ion-icon>
-            </li> -->
+            
           </div>
 
-          <p>Escolha a visibilidade:</p>
+          <p class="text">Escolha a visibilidade:</p>
 
           <li data-identifier="visibility" class="liVisibility" onclick="checkItemVisibility(this)">
             <div class="card cardPublic">
@@ -79,22 +65,16 @@
 
     <div class="chatMessages">
       <ul class="ulChats">
-        <!-- <li>
-          <p><span>(09:21:45)</span> <strong>João</strong> entra na sala...</p>
-        </li>
-        <li class="messageChat">
-          <p><span>(09:21:45)</span> <strong>João</strong> para <strong>Todos</strong> Bom dia</p>
-        </li>
-        <li class="messagePrivate">
-          <p><span>(09:21:45)</span> <strong>João</strong> reservadamente para <strong>Maria</strong> : Oi gatinha quer
-            tc?</p>
-        </li> -->
+       
       </ul>
     </div>
 
     <footer>
-      <input type="text" class="inputMessage" placeholder="Escreva aqui...">
-      <ion-icon name="paper-plane-outline"></ion-icon>
+      <input type="text" class="inputMessage" placeholder="Escreva aqui..." >
+      <button onclick="postMessages()">
+        <ion-icon name="paper-plane-outline"></ion-icon>
+      </button>  
+
     </footer>
 
   </div>

@@ -1,8 +1,15 @@
 let userFormatted;
 let participants;
+
+let message;
+let messagePrivate;
+let messagePublico;
 let messages = [];
 
+let user;
+let statusOn;
 
+let checkParticipant;
 
 function redirectToHome() {
   const button = document.querySelector(".buttonLogin");
@@ -13,7 +20,7 @@ function redirectToHome() {
   home.classList.add('showChat');
 
   setInterval(searchMessage, 3000);
-  // setInterval(searchParticipants, 10000);
+  setInterval(searchParticipants, 10000);
   searchParticipants()
 
 }
@@ -63,19 +70,20 @@ function checkItemVisibility(elementIcon) {
     itemSelected.classList.remove('showIconCheck');
   }
   elementIcon.childNodes[3].classList.add('showIconCheck');
-  console.log('teste2',elementIcon.childNodes[3])
 
-
+  statusOn = elementIcon.innerText.toLowerCase();
 }
 
 function checkItemParticipant(elementIcon) {
   const itemSelected = document.querySelector('.liParticipant .showIconCheck')
-  console.log('teste',elementIcon.childNodes[3])
 
   if (itemSelected !== null) {
     itemSelected.classList.remove('showIconCheck');
   }
   elementIcon.childNodes[3].classList.add('showIconCheck');
+
+  checkParticipant = elementIcon;
+  user = elementIcon.innerText;
 }
 
 //buscar participantes
@@ -97,19 +105,19 @@ function renderParticipants() {
   <li class="liParticipant" onclick="checkItemParticipant(this)">
      <div class="card">
       <ion-icon name="people"></ion-icon>
-        Todos
+      <p class="textUser"> Todos </p>
     </div>
   <ion-icon name="checkmark-sharp" class="checkmark-outline"></ion-icon>
   </li>
   `;
 
-  for (let i = 0; i == participants <= 10; i++) {
+  for (let i = 0; i <= 5; i++) {
 
     ul.innerHTML = ul.innerHTML + `
     <li data-identifier="participant" class="liParticipant" onclick="checkItemParticipant(this)">
     <div class="card">
       <ion-icon name="person-circle"></ion-icon>
-      ${participants[i].name}
+      <p class="textUser"> ${participants[i].name} </p>
       </div>
     <ion-icon name="checkmark-sharp" class="checkmark-outline"></ion-icon>
   </li>
@@ -136,13 +144,14 @@ function getMessages(response) {
 
 function renderMessages() {
   const ul = document.querySelector('.chatMessages');
+  const li = document.querySelector('.chatMessages li');
 
   ul.innerHTML = '';
 
   for (let i = 0; i < messages.length; i++) {
 
-
-    if (messages[i].type == "private_message" && messages[i].to == userFormatted.name) {
+    // && messages[i].to == userFormatted.name TO DO
+    if (messages[i].type == "private_message") {
       ul.innerHTML = ul.innerHTML + `
       <li class="messagePrivate">
         <p> <span>${messages[i].time}</span> <strong>${messages[i].from}</strong> para <strong>${messages[i].to} </strong> ${messages[i].text}</p>
@@ -163,12 +172,64 @@ function renderMessages() {
      </li>
       `;
     }
-
   }
-
 }
 
-renderMessages()
+renderMessages();
+
+//enviar mensagens
+function postMessages() {
+  const input = document.querySelector('.inputMessage').value;
+
+  message = {
+    from: userFormatted.name,
+    to: "Todos",
+    text: input,
+    type: "message"
+  }
+
+  messagePublico = {
+    from: userFormatted.name,
+    to: user,
+    text: input,
+    type: "message"
+  }
+  // ou "private_message" para o bônus
+  // let user;
+  // let statusOn;
+
+  messagePrivate = {
+    from: userFormatted.name,
+    to: user,
+    text: input,
+    type: "private_message"
+  }
 
 
+  console.log('teste', user)
 
+  if (user != undefined && statusOn == 'reservadamente') {
+    const promisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', messagePrivate);
+    promisse.then(submitMessages)
+    promisse.catch(() => {
+      console.log('error')
+    })
+  } else if (user != undefined && statusOn == 'público') {
+    const promisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', messagePublico);
+    promisse.then(submitMessages)
+    promisse.catch(() => {
+      console.log('error')
+    })
+  } else {
+    const promisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', message);
+    promisse.then(submitMessages)
+    promisse.catch(() => {
+      console.log('error')
+    })
+  }
+}
+
+
+function submitMessages() {
+  renderMessages();
+}

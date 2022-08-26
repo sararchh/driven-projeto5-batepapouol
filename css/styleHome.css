@@ -14,10 +14,13 @@
 }
 
 .chatMessages{
+  max-width: 375px;
+  width: 375px;
   padding: 100px 0;
 }
 
 header {
+  max-width: 375px;
   width: 100%;
   height: 80px;
 
@@ -50,6 +53,7 @@ ul {
   width:375px;
 }
 
+
 li {
   margin: 5px 0;
   border-radius: 2px;
@@ -67,6 +71,8 @@ li p {
   color: var(--text);
   font-size: 14px;
   line-height: 16.41px;
+
+  word-break: break-all
 }
 
 li span {
@@ -74,6 +80,8 @@ li span {
 }
 
 .messageChat {
+  max-width: 375px;
+  width:375px;
   background-color: var(--background);
 }
 
@@ -82,6 +90,7 @@ li span {
 }
 
 footer {
+  max-width: 375px;
   width: 100%;
   height: 80px;
 
@@ -102,6 +111,8 @@ footer {
 .inputMessage {
   border: none;
   outline: none;
+
+  width: 80%;
 
   font-size: 18px;
   line-height: 21px;
@@ -150,9 +161,6 @@ footer ion-icon {
   display: none;
 }
 
-.menu-items p{
-  margin: 35px 0;
-}
 
 .menu-items ion-icon {
   margin: 0 5px;
@@ -160,7 +168,8 @@ footer ion-icon {
   cursor: pointer;
 }
 
-.menu-items p {
+.text {
+  margin: 35px 0;
   text-align: center;
   font-size: 16px;
   font-weight: 700;
@@ -185,8 +194,20 @@ footer ion-icon {
 .liParticipant {
   display: flex;
   justify-content: space-between;
+  
+  min-height: 10px;
+  height: auto;
+  margin: 10px;
+  padding: 0;
 }
 
 .showIconCheck {
   display: inline;
 }
+
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+

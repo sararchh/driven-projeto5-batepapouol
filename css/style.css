@@ -48,3 +48,8 @@
   border-radius: 9px;
   background-color: var(--buttonLogin);
 }
+
+.buttonLogin:hover {
+  color: var(--background);
+  background-color: var(--green);
+}
