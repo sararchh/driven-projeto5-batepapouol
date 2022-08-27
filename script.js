@@ -18,6 +18,8 @@ document.addEventListener("keypress", function (e) {
   }
 });
 
+
+
 function logarChat() {
   const user = document.querySelector(".inputLogin").value;
   const button = document.querySelector("buttonLogin");
@@ -161,8 +163,7 @@ function renderMessages() {
 
   for (let i = 0; i < messages.length; i++) {
 
-    // && messages[i].to == userFormatted.name TODO
-    if (messages[i].type == "private_message") {
+    if (messages[i].type == "private_message" && (messages[i].to == userFormatted.name || messages[i].from == userFormatted.name)) {
       ul.innerHTML = ul.innerHTML + `
       <li class="messagePrivate">
         <p> <span>${messages[i].time}</span> <strong>${messages[i].from}</strong> para <strong>${messages[i].to} </strong> ${messages[i].text}</p>
@@ -184,6 +185,8 @@ function renderMessages() {
       `;
     }
   }
+
+  window.scrollTo(0, document.body.scrollHeight);
 }
 
 

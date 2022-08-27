@@ -20,7 +20,7 @@
 
   <div class="container">
     <img class="logo" src="./assets/logo.png" alt="Logo chat Uol">
-    <input class="inputLogin" type="text" placeholder="Digite seu nome">
+    <input class="inputLogin" autocomplete="off" type="text" placeholder="Digite seu nome">
     <button class="buttonLogin" onclick="logarChat()">Entrar</button>
     <div class="spinner hideLogin">
       <img src="./assets/spinner.svg" alt="spinner">
@@ -76,7 +76,6 @@
     <footer>
       <div class="textMessage">
         <input type="text" class="inputMessage" placeholder="Escreva aqui...">
-        <!-- <p>Enviando para Maria (reservadamente)</p> -->
       </div>
       <button onclick="postMessages()" id="submit">
         <ion-icon name="paper-plane-outline"></ion-icon>

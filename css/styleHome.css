@@ -14,12 +14,6 @@
   display: inline;
 }
 
-.chatMessages{
-  max-width: 375px;
-  width: 375px;
-  padding: 100px 0;
-}
-
 header {
   max-width: 375px;
   width: 100%;
@@ -54,6 +48,11 @@ ul {
   width:375px;
 }
 
+.chatMessages{
+  max-width: 375px;
+  width: 375px;
+  padding: 100px 0;
+}
 
 .ulChats {
   overflow-y: hidden;
@@ -154,7 +153,6 @@ footer ion-icon {
 }
 
 
-
 .navbar {
   max-width: 375px;
   width: 100%;
@@ -218,6 +216,8 @@ footer ion-icon {
 .liVisibility {
   display: flex;
   justify-content: space-between;
+
+  cursor: pointer;
 }
 
 .participants {
@@ -233,6 +233,8 @@ footer ion-icon {
   height: auto;
   margin: 10px;
   padding: 0;
+
+  cursor: pointer;
 }
 
 .showIconCheck {
