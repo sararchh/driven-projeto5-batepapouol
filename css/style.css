@@ -10,6 +10,17 @@
   flex-direction: column;
 }
 
+.spinner {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.spinner p {
+  font-size: 20px;
+}
+
+
 .hideLogin {
   display: none;
 }

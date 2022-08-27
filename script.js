@@ -11,25 +11,12 @@ let statusOn;
 
 let checkParticipant;
 
-function redirectToHome() {
-  const button = document.querySelector(".buttonLogin");
-  const login = document.querySelector(".container");
-  const home = document.querySelector(".containerHome");
-
-  login.classList.add('hideLogin');
-  home.classList.add('showChat');
-
-  setInterval(searchMessage, 3000);
-  setInterval(searchParticipants, 10000);
-  searchParticipants()
-
-}
-
-
-function redirectError() {
-  alert('Digite nome válido, pois este digitado já está em uso');
-}
-
+document.addEventListener("keypress", function (e) {
+  if (e.key === 'Enter') {
+    var btn = document.querySelector("#submit");
+    btn.click();
+  }
+});
 
 function logarChat() {
   const user = document.querySelector(".inputLogin").value;
@@ -41,21 +28,45 @@ function logarChat() {
 
   const promisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', userFormatted);
 
-  promisse.then(redirectToHome);
-  promisse.catch(redirectError);
+  promisse.then(redirectToSpinner);
+  promisse.catch(() => {
+    alert('Digite nome válido, pois este digitado já está em uso');
+  });
 
   setInterval(keepConnected, 5000);
-
 }
+
+function redirectToSpinner(){
+  const inputLogin = document.querySelector(".inputLogin");
+  const button = document.querySelector('.buttonLogin');
+  const spinner = document.querySelector('.spinner');
+
+  inputLogin.classList.add('hideLogin');
+  button.classList.add('hideLogin');
+  spinner.classList.remove('hideLogin');
+
+  setTimeout(redirectToHome, 3000);
+}
+
+
+function redirectToHome() {
+  const login = document.querySelector(".container");
+  
+  const home = document.querySelector(".containerHome");
+
+  login.classList.add('hideLogin');
+  home.classList.add('showChat');
+
+  setInterval(searchMessage, 3000);
+  searchParticipants();
+  setInterval(searchParticipants, 10000);
+}
+
 
 function keepConnected() {
   const promisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', userFormatted);
-  promisse.catch(redirectError);
+  promisse.catch(() => window.location.reload());
 }
-
-// SCRIPT HOME
-
-
 
 function showModal() {
   modal = document.querySelector('.navbar');
@@ -95,7 +106,7 @@ function searchParticipants() {
 function getParticipants(response) {
   participants = response.data;
 
-  renderParticipants();
+   renderParticipants();
 }
 
 function renderParticipants() {
@@ -111,7 +122,7 @@ function renderParticipants() {
   </li>
   `;
 
-  for (let i = 0; i <= 5; i++) {
+  for (let i = 0; i <= participants.length ; i++) {
 
     ul.innerHTML = ul.innerHTML + `
     <li data-identifier="participant" class="liParticipant" onclick="checkItemParticipant(this)">
@@ -131,7 +142,7 @@ function searchMessage() {
   const promisse = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
   promisse.then(getMessages)
   promisse.catch(() => {
-    console.log('erro ao buscar')
+    alert('Não foi possivel buscar mensagens')
   })
 }
 
@@ -150,7 +161,7 @@ function renderMessages() {
 
   for (let i = 0; i < messages.length; i++) {
 
-    // && messages[i].to == userFormatted.name TO DO
+    // && messages[i].to == userFormatted.name TODO
     if (messages[i].type == "private_message") {
       ul.innerHTML = ul.innerHTML + `
       <li class="messagePrivate">
@@ -175,11 +186,11 @@ function renderMessages() {
   }
 }
 
-renderMessages();
 
 //enviar mensagens
 function postMessages() {
   const input = document.querySelector('.inputMessage').value;
+  const textMessage = document.querySelector('.textMessage');
 
   message = {
     from: userFormatted.name,
@@ -206,29 +217,39 @@ function postMessages() {
   }
 
 
-  console.log('teste', user)
-
   if (user != undefined && statusOn == 'reservadamente') {
+    textMessage.innerHTML =  ` 
+    <input type="text" class="inputMessage" placeholder="Escreva aqui...">
+    <p>Enviando para ${user} (reservadamente)</p>
+    `;
+
     const promisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', messagePrivate);
     promisse.then(submitMessages)
     promisse.catch(() => {
-      console.log('error')
+      alert('Não foi possivel enviar mensagem')
     })
+
+    
   } else if (user != undefined && statusOn == 'público') {
+    textMessage.innerHTML =  ` 
+    <input type="text" class="inputMessage" placeholder="Escreva aqui...">`;
+
     const promisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', messagePublico);
     promisse.then(submitMessages)
     promisse.catch(() => {
-      console.log('error')
+      alert('Não foi possivel enviar mensagem')
     })
   } else {
+    textMessage.innerHTML =  ` 
+    <input type="text" class="inputMessage" placeholder="Escreva aqui...">`;
+
     const promisse = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', message);
     promisse.then(submitMessages)
     promisse.catch(() => {
-      console.log('error')
+      alert('Não foi possivel enviar mensagem')
     })
   }
 }
-
 
 function submitMessages() {
   renderMessages();

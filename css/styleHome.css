@@ -1,3 +1,4 @@
+
 .containerHome {
   max-width: 375px;
   width: 375px;
@@ -51,6 +52,22 @@ ion-icon {
 ul {
   max-width: 375px;
   width:375px;
+}
+
+
+.ulChats {
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+/* OCULTAR A BARRA */
+.ulChats::-webkit-scrollbar  {
+  display: none;
+}
+
+
+.ulChats::-moz-scrollbar  {
+  display: none;
 }
 
 
@@ -108,6 +125,19 @@ footer {
   background-color: var(--background);
 }
 
+footer p {
+  color: var(--gray-100);
+  
+  font-size: 15px;
+  line-height: 25px;  
+  font-weight: 300;
+}
+
+footer ion-icon {
+  font-size: 26px;
+  cursor: pointer;
+}
+
 .inputMessage {
   border: none;
   outline: none;
@@ -123,10 +153,7 @@ footer {
   font-style: italic;
 }
 
-footer ion-icon {
-  font-size: 26px;
-  cursor: pointer;
-}
+
 
 .navbar {
   max-width: 375px;

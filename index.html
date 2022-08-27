@@ -22,6 +22,10 @@
     <img class="logo" src="./assets/logo.png" alt="Logo chat Uol">
     <input class="inputLogin" type="text" placeholder="Digite seu nome">
     <button class="buttonLogin" onclick="logarChat()">Entrar</button>
+    <div class="spinner hideLogin">
+      <img src="./assets/spinner.svg" alt="spinner">
+      <p>Entrando...</p>
+    </div>
   </div>
 
   <div class="containerHome">
@@ -38,7 +42,7 @@
             para enviar mensagem:</p>
 
           <div class="participants">
-            
+
           </div>
 
           <p class="text">Escolha a visibilidade:</p>
@@ -65,15 +69,18 @@
 
     <div class="chatMessages">
       <ul class="ulChats">
-       
+
       </ul>
     </div>
 
     <footer>
-      <input type="text" class="inputMessage" placeholder="Escreva aqui..." >
-      <button onclick="postMessages()">
+      <div class="textMessage">
+        <input type="text" class="inputMessage" placeholder="Escreva aqui...">
+        <!-- <p>Enviando para Maria (reservadamente)</p> -->
+      </div>
+      <button onclick="postMessages()" id="submit">
         <ion-icon name="paper-plane-outline"></ion-icon>
-      </button>  
+      </button>
 
     </footer>
 
