@@ -9,8 +9,6 @@ let messages = [];
 let user;
 let statusOn;
 
-let checkParticipant;
-
 document.addEventListener("keypress", function (e) {
   if (e.key === 'Enter') {
     var btn = document.querySelector("#submit");
@@ -50,7 +48,6 @@ function redirectToSpinner(){
   setTimeout(redirectToHome, 3000);
 }
 
-
 function redirectToHome() {
   const login = document.querySelector(".container");
   
@@ -59,6 +56,7 @@ function redirectToHome() {
   login.classList.add('hideLogin');
   home.classList.add('showChat');
 
+  searchMessage();
   setInterval(searchMessage, 3000);
   searchParticipants();
   setInterval(searchParticipants, 10000);
@@ -95,7 +93,6 @@ function checkItemParticipant(elementIcon) {
   }
   elementIcon.childNodes[3].classList.add('showIconCheck');
 
-  checkParticipant = elementIcon;
   user = elementIcon.innerText;
 }
 
@@ -123,6 +120,7 @@ function renderParticipants() {
   <ion-icon name="checkmark-sharp" class="checkmark-outline"></ion-icon>
   </li>
   `;
+
 
   for (let i = 0; i <= participants.length ; i++) {
 
